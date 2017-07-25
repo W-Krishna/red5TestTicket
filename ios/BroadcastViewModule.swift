@@ -10,9 +10,9 @@ import UIKit
 
 @objc(BroadcastViewModule)
 class BroadcastViewModule : RCTViewManager {
-  
+
   override func view() -> UIView! {
     return BroadcastView();
   }
-  
+
 }

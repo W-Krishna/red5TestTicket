@@ -8,7 +8,8 @@
 
 #import "React/RCTBridgeModule.h"
 #import "React/RCTViewManager.h"
+#import <React/RCTLog.h>
 
 @interface RCT_EXTERN_MODULE(BroadcastViewModule, RCTViewManager)
-
+RCT_EXPORT_VIEW_PROPERTY(cameraPosition, NSString)
 @end

@@ -8,16 +8,23 @@
 
 import Foundation
 import UIKit
-
+import R5Streaming
 
 class BroadcastView: UIView {
+
+  let r5ViewController = R5ViewController()
+
+  //  frontCamera or backCamera
+  var cameraPosition: String = "" {
+    didSet {
+      r5ViewController.switchCameraPosition(to: cameraPosition)
+    }
+  }
 
   override init(frame: CGRect) {
     super.init(frame: frame)
 
-    let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 15))
-    label.text = "This is Swift"
-    self.addSubview(label)
+    self.addSubview(r5ViewController.view)
   }
 
   required init?(coder aDecoder: NSCoder) {
