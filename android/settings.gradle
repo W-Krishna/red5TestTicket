@@ -1,0 +1,3 @@
+rootProject.name = 'red5Test'
+
+include ':app'
