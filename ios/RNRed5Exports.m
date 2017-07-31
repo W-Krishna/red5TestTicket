@@ -12,4 +12,5 @@
 
 @interface RCT_EXTERN_MODULE(BroadcastViewModule, RCTViewManager)
 RCT_EXPORT_VIEW_PROPERTY(cameraPosition, NSString)
+RCT_EXPORT_VIEW_PROPERTY(publishWithBroadcastId, NSString)
 @end

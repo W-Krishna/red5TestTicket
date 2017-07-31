@@ -13,17 +13,27 @@ import R5Streaming
 class BroadcastView: UIView {
 
   let r5ViewController = R5ViewController()
-
-  //  frontCamera or backCamera
+  
   var cameraPosition: String = "" {
     didSet {
       r5ViewController.switchCameraPosition(to: cameraPosition)
     }
   }
+  
+  var publishWithBroadcastId: String = "" {
+    didSet {
+      if publishWithBroadcastId != "" {
+        r5ViewController.publishWith(broadcastId: publishWithBroadcastId)
+      } else {
+        r5ViewController.stopPublishing()
+      }
+      
+    }
+  }
+  
 
   override init(frame: CGRect) {
     super.init(frame: frame)
-
     self.addSubview(r5ViewController.view)
   }
 
