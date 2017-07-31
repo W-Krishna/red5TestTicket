@@ -36,7 +36,7 @@ class R5ViewController: R5VideoViewController, R5StreamDelegate {
 
 
   func configureRed5() {
-    configuration.host = "35.196.4.176"
+    configuration.host = "35.196.40.204"
     configuration.port = 8554
     configuration.contextName = "live"
     configuration.licenseKey = "LQZW-IFEK-5KOH-VSGX"
