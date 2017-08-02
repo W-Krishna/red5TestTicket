@@ -4,50 +4,73 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   AppRegistry,
   StyleSheet,
-  Text,
-  View
-} from 'react-native';
+  View,
+  Button
+} from 'react-native'
+import BroadcastView from 'react-native-red5'
 
 export default class red5Test extends Component {
-  render() {
+  constructor (props) {
+    super(props)
+    this.state = {
+      cameraPosition: 'frontCamera',
+      broadcastId: ''
+    }
+    this._toggleCamera = this._toggleCamera.bind(this)
+    this._toggleBroadcast = this._toggleBroadcast.bind(this)
+  }
+
+  _toggleCamera () {
+    if (this.state.cameraPosition === 'frontCamera') {
+      this.setState({cameraPosition: 'backCamera'})
+    } else {
+      this.setState({cameraPosition: 'frontCamera'})
+    }
+  }
+
+  _toggleBroadcast () {
+    if (this.state.broadcastId === 'test1') {
+      this.setState({broadcastId: ''})
+    } else {
+      this.setState({broadcastId: 'test1'})
+    }
+  }
+
+  render () {
+    const view = <BroadcastView
+              style={{flex: 1}}
+              publishWithBroadcastId={this.state.broadcastId}
+              cameraPosition={this.state.cameraPosition}
+            />
+            view.styles
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
+        <BroadcastView
+          style={{flex: 1}}
+          publishWithBroadcastId={this.state.broadcastId}
+          cameraPosition={this.state.cameraPosition}
+        />
+        <Button
+          title={'Toggle Camera'}
+          onPress={this._toggleCamera}
+        />
+        <Button
+          title={'Toggle broadcast'}
+          onPress={this._toggleBroadcast}
+        />
       </View>
-    );
+    )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+    flex: 1
+  }
+})
 
-AppRegistry.registerComponent('red5Test', () => red5Test);
+AppRegistry.registerComponent('red5Test', () => red5Test)
