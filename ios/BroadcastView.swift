@@ -34,6 +34,7 @@ class BroadcastView: UIView {
 
   override init(frame: CGRect) {
     super.init(frame: frame)
+    r5ViewController.view.frame = frame
     self.addSubview(r5ViewController.view)
   }
 

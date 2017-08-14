@@ -17,7 +17,7 @@ export default class red5Test extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      cameraPosition: 'frontCamera',
+      cameraPosition: 'front',
       broadcastId: ''
     }
     this._toggleCamera = this._toggleCamera.bind(this)
@@ -25,10 +25,10 @@ export default class red5Test extends Component {
   }
 
   _toggleCamera () {
-    if (this.state.cameraPosition === 'frontCamera') {
-      this.setState({cameraPosition: 'backCamera'})
+    if (this.state.cameraPosition === 'front') {
+      this.setState({cameraPosition: 'back'})
     } else {
-      this.setState({cameraPosition: 'frontCamera'})
+      this.setState({cameraPosition: 'front'})
     }
   }
 
@@ -41,12 +41,6 @@ export default class red5Test extends Component {
   }
 
   render () {
-    const view = <BroadcastView
-              style={{flex: 1}}
-              publishWithBroadcastId={this.state.broadcastId}
-              cameraPosition={this.state.cameraPosition}
-            />
-            view.styles
     return (
       <View style={styles.container}>
         <BroadcastView
